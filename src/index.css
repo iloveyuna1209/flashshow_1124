@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #070b14;
+    --glass-bg: rgba(15, 23, 42, 0.42);
+    --glass-border: rgba(255, 255, 255, 0.11);
+    --glass-highlight: rgba(255, 255, 255, 0.22);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-base);
+    font-family:
+      "SF Pro Display", "Segoe UI Variable", "Noto Sans TC", "PingFang TC",
+      "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+  }
+}
+
+.font-literary {
+  font-family:
+    "Georgia", "Noto Serif TC", "Songti TC", "PMingLiU", "Times New Roman", serif;
+}
+
+.font-mono-tech {
+  font-family:
+    "JetBrains Mono", "Cascadia Code", "Fira Code", ui-monospace, monospace;
+}
+
+/* Museum glassmorphism panel */
+.glass-panel {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(15, 23, 42, 0.48) 55%,
+    rgba(7, 11, 20, 0.65) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Seamless dark-knockout blending so 3D diorama images float cleanly with ZERO box edges */
+.diorama-blend {
+  mix-blend-mode: lighten;
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 0, 0, 1) 52%,
+    rgba(0, 0, 0, 0.85) 64%,
+    rgba(0, 0, 0, 0) 76%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(0, 0, 0, 1) 52%,
+    rgba(0, 0, 0, 0.85) 64%,
+    rgba(0, 0, 0, 0) 76%
+  );
+}
+
+.diorama-blend-wide {
+  mix-blend-mode: lighten;
+  mask-image: radial-gradient(
+    ellipse 72% 70% at 50% 50%,
+    rgba(0, 0, 0, 1) 56%,
+    rgba(0, 0, 0, 0.82) 70%,
+    rgba(0, 0, 0, 0) 86%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 70% at 50% 50%,
+    rgba(0, 0, 0, 1) 56%,
+    rgba(0, 0, 0, 0.82) 70%,
+    rgba(0, 0, 0, 0) 86%
+  );
+}
+
+/* Subtle glass shimmer sweep */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-140%) skewX(-18deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+.glass-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 50%,
+    transparent 100%
+  );
+  animation: shimmerSweep 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5.5s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.55))
+      drop-shadow(0 0 32px rgba(244, 63, 94, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.85))
+      drop-shadow(0 0 54px rgba(244, 63, 94, 0.6));
+  }
+}
+
+.animate-neon-pulse {
+  animation: neonPulse 3.2s ease-in-out infinite;
+}
