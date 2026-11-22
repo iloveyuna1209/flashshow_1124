@@ -53,18 +53,6 @@ export function Slide02Motivation({ step }: Props) {
 
       {/* Visual stage: Chaos capsules morph smoothly into 3 luminous columns */}
       <div className="relative flex h-[62vh] w-full max-w-6xl items-center justify-center">
-        {/* Background subtle image if available */}
-        <motion.img
-          src="./assets/chaos-capsules.jpg"
-          alt=""
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = 'none';
-          }}
-          animate={{ opacity: organized ? 0.08 : 0.35, scale: organized ? 1.08 : 1 }}
-          transition={{ duration: 0.9 }}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover diorama-blend-wide"
-        />
-
         {/* Center "AI 焦慮" pulse core when chaotic */}
         <motion.div
           animate={{
